@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#a9aab4</color>
+    <color name="colorPrimaryDark">#393a3b</color>
     <color name="colorAccent">#FF4081</color>
-    <drawable name="dado_texto">#8B0000</drawable>
-    <drawable name="sombra_texto">#8B0000</drawable>
+    <color name="dado_texto">#FE0000</color>
+    <color name="sombra_texto">#8B0000</color>
+    <color name="cor_botao">#c8191b1a</color>
+    <color name="spinner_color">#aaa9b3</color>
 </resources>
