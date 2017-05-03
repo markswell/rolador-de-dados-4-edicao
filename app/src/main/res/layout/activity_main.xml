@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:max="9"
-            android:progress="6"
+            android:progress="5"
             android:layout_marginLeft="30sp"
             android:layout_marginRight="30sp"
             android:progressDrawable="@color/dado_texto"
@@ -38,19 +38,35 @@
         android:layout_width="match_parent"
         android:layout_height="130sp"
         android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textDado"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10sp"
-            android:layout_weight="1"
-            android:background="@drawable/dado"
-            android:gravity="center"
-            android:text="1"
-            android:textColor="@color/dado_texto"
-            android:textSize="70sp" />
+            android:layout_weight="1">
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30sp"
+                android:layout_marginRight="30sp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/spinner_color"
+                android:dropDownWidth="match_parent"
+                android:visibility="visible" />
+            <TextView
+                android:id="@+id/textDado"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:layout_weight="1"
+                android:background="@drawable/dado"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/dado_texto"
+                android:textSize="70sp" />
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -78,46 +94,13 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="5sp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="30sp"
-                android:layout_height="30sp"
-                android:layout_marginLeft="30sp"
-                android:layout_marginRight="30sp"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:background="@color/spinner_color"
-                android:dropDownWidth="match_parent"
-                android:visibility="visible" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="" />
-    </LinearLayout>
-
     <Button
         android:id="@+id/btn_rolar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30sp"
         android:layout_marginRight="30sp"
-        android:layout_marginTop="15sp"
+        android:layout_marginTop="30sp"
         android:textColor="@color/dado_texto"
         android:textSize="20sp"
         android:background="@color/cor_botao"

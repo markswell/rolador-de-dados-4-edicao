@@ -13,6 +13,7 @@ public class IntegerCustom {
 
     @Override
     public String toString() {
-        return i + " dados";
+
+        return i.equals(1) ? i + " dado" : i + " dados";
     }
 }

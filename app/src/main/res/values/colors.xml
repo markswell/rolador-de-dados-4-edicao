@@ -6,5 +6,5 @@
     <color name="dado_texto">#FE0000</color>
     <color name="sombra_texto">#8B0000</color>
     <color name="cor_botao">#c8191b1a</color>
-    <color name="spinner_color">#aaa9b3</color>
+    <color name="spinner_color">#00000000</color>
 </resources>
