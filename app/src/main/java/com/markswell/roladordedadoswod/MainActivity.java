@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView resultado;
     private Button btn_rolar;
     private Integer numeroDados;
-    private TextView resultadoIndividul;
+    private TextView resultadoIndividual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         numeroDados = new Integer(1);
         btn_rolar = (Button)findViewById(R.id.btn_rolar);
         resultado = (TextView)findViewById(R.id.resultado);
-        resultadoIndividul = (TextView)findViewById(R.id.resultado_individul);
+        resultadoIndividual = (TextView)findViewById(R.id.resultado_individul);
 
         dificuldade = (SeekBar)findViewById(R.id.dificuldade);
 
@@ -72,30 +72,10 @@ public class MainActivity extends AppCompatActivity {
         btn_rolar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Random random = new Random();
-                Integer somaResultados = 0;
-                List<Integer> mostar = new ArrayList<>();
-                for (int i = 0; i < numeroDados; i++){
-                    Integer result = random.nextInt(10) + 1;
-                    mostar.add(result);
-                    if(result >= dificuldadeNivel ){
-                        somaResultados = somaResultados + 1;
-                    }else if(result.equals(1) && subtraiUm){
-                        somaResultados = somaResultados - 1;
-                    }
-                    if(result.equals(10) && dobraDez){
-                        somaResultados = somaResultados + 1;
-                    }
-                }
-                if(somaResultados < 0){
-                    resultado.setText(somaResultados + " falha(s) critica(s)");
-                }else if(somaResultados.equals(0)){
-                    resultado.setText("Falha");
-                }else{
-                    resultado.setText(somaResultados + " sucesso(s)");
-                }
-                Gson gson = new Gson();
-                resultadoIndividul.setText(gson.toJson(mostar));
+                Rolador rolador = new Rolador(dificuldadeNivel, numeroDados, dobraDez, subtraiUm);
+                Resultado resultadoRolador = rolador.rolar();
+                resultado.setText(resultadoRolador.getResultado());
+                resultadoIndividual.setText(resultadoRolador.getContagemDados());
             }
         });
 
