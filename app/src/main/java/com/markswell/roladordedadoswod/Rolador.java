@@ -32,6 +32,7 @@ public class Rolador {
             somaResultados = avaliar(somaResultados, result);
             if(result.equals(10) && rerolarDez){
                 Integer res = obterResultadoDado();
+                mostar.add(res);
                 somaResultados = avaliar(somaResultados, res);
             }
         }
