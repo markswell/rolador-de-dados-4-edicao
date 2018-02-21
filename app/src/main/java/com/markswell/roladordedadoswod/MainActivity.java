@@ -1,5 +1,6 @@
 package com.markswell.roladordedadoswod;
 
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -68,10 +69,12 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mudarCorNormal();
                 Rolador rolador = new Rolador(dificuldadeNivel, numeroDados, dobraDez, subtraiUm);
                 Resultado resultadoRolador = rolador.rolar();
                 resultado.setText(resultadoRolador.getResultado());
-                resultadoIndividual.setText(resultadoRolador.getContagemDados());
+                resultadoIndividual.setText(resultadoRolador.getContagemDados() + avaliarContagemDadosDez(resultadoRolador));
+                mudarCorFalhaCritica();
             }
         });
 
@@ -117,6 +120,19 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void mudarCorFalhaCritica() {
+        if(resultado.getText().toString().contains("críti")){
+            resultado.setTextColor(Color.parseColor("#FE0000"));
+        }
+    }
+    private void mudarCorNormal() {
+        resultado.setTextColor(Color.parseColor("#FFFFFF"));
+    }
+
+    private String avaliarContagemDadosDez(Resultado resultadoRolador) {
+        return resultadoRolador.getContagemDadosDez().equals("[]")? "" : "  " + resultadoRolador.getContagemDadosDez();
     }
 
     private void iniciaSpinner() {

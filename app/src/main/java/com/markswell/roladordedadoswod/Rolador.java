@@ -15,6 +15,7 @@ public class Rolador {
     private Integer dados;
     private boolean rerolarDez;
     private boolean subtrairUm;
+    private Integer somaResultados;
 
     public Rolador(Integer dificuldade, Integer dados, boolean rerolarDez, boolean subtrairUm) {
         this.dificuldade = dificuldade;
@@ -24,42 +25,56 @@ public class Rolador {
     }
 
     public Resultado rolar() {
-        Integer somaResultados = 0;
-        List<Integer> mostar = new ArrayList<>();
+        somaResultados = 0;
+        List<Integer> resultados = new ArrayList<>();
+        List<Integer> resultadosDez = new ArrayList<>();
         for (int i = 0; i < dados; i++){
             Integer result = obterResultadoDado();
-            mostar.add(result);
-            somaResultados = avaliar(somaResultados, result);
+            resultados.add(result);
+            avaliar(result);
             if(result.equals(10) && rerolarDez){
                 Integer res = obterResultadoDado();
-                mostar.add(res);
-                somaResultados = avaliar(somaResultados, res);
+                resultadosDez.add(res);
+                avaliar(res);
             }
         }
 
-        return criarResultado(somaResultados, mostar);
+        return criarResultado(somaResultados, resultados, resultadosDez);
     }
 
     @NonNull
-    private Resultado criarResultado(Integer somaResultados, List<Integer> mostar) {
+    private Resultado criarResultado(Integer somaResultados, List<Integer> resultados, List<Integer> resultadosDez) {
         String resultado = new String();
         if(somaResultados < 0){
-            resultado = somaResultados + " falha(s) critica(s)";
+            resultado = avaliarFalhaCritica(somaResultados);
         }else if(somaResultados.equals(0)){
-            resultado = "Falha";
+            resultado = "Falha!";
         }else{
-            resultado = somaResultados + " sucesso(s)";
+            resultado = avaliarSucesso(somaResultados);
         }
         Gson gson = new Gson();
-        String resultadoDados = gson.toJson(mostar);
-        return  new Resultado(resultado, resultadoDados);
+        return  new Resultado(resultado, gson.toJson(resultados), gson.toJson(resultadosDez));
     }
 
-    private Integer avaliar(Integer somaResultados, Integer result) {
+    @NonNull
+    private String avaliarSucesso(Integer somaResultados) {
+        if(somaResultados.equals(1))
+            return "1sucesso!";
+        return somaResultados + " sucessos!";
+    }
+
+    @NonNull
+    private String avaliarFalhaCritica(Integer somaResultados) {
+        if(somaResultados.equals(-1))
+            return "Falha crítica!";
+        return (somaResultados + " falhas críticas!").replace("-","");
+    }
+
+    private Integer avaliar(Integer result) {
         if(result >= dificuldade ){
-            somaResultados = somaResultados + 1;
+            ++somaResultados;
         }else if(result.equals(1) && subtrairUm){
-            somaResultados = somaResultados - 1;
+            --somaResultados;
         }
         return somaResultados;
     }

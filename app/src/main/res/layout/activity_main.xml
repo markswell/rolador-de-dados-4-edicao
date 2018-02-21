@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:textSize="40sp"
             android:text="@string/texto_dificuldade_6"
-            android:textColor="@color/sombra_texto"
+            android:textColor="@color/dado_texto"
             android:elevation="18sp"
             android:shadowColor="@color/sombra_texto"
             android:textStyle="bold"
@@ -34,7 +34,7 @@
             android:layout_marginLeft="30sp"
             android:layout_marginRight="30sp"
             android:progressDrawable="@color/sombra_texto"
-            android:thumb="@drawable/thumb"/>
+            android:thumbTint="@color/dado_texto"/>
 
 
     <LinearLayout
@@ -69,7 +69,7 @@
                 android:background="@drawable/dado"
                 android:gravity="center"
                 android:text="1"
-                android:textColor="@color/sombra_texto"
+                android:textColor="@color/dado_texto"
                 android:textSize="70sp" />
         </FrameLayout>
 
@@ -117,7 +117,7 @@
             android:gravity="center"
             android:layout_marginBottom="@dimen/dezesseis"
             android:textAlignment="center"
-            android:textSize="14sp"
+            android:textSize="18sp"
             android:textColor="#FFFFFF"/>
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
