@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Rolador de dados WOD</string>
+    <string name="app_name">Rolador WoD</string>
     <string name="dificuldade">Dificuldade:</string>
     <string name="texto_dificuldade_6">Dificuldade 6 :</string>
     <string name="botao_rolar">Rolar</string>
