@@ -5,16 +5,20 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/castelo_mal_assombrado">
-
+    <LinearLayout
+        android:id="@+id/ancora"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/textDificuldade"
-            android:layout_marginTop="5sp"
+            android:layout_marginTop="100dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="40sp"
             android:text="@string/texto_dificuldade_6"
-            android:textColor="@color/dado_texto"
+            android:textColor="@color/sombra_texto"
             android:elevation="18sp"
             android:shadowColor="@color/sombra_texto"
             android:textStyle="bold"
@@ -29,11 +33,12 @@
             android:progress="5"
             android:layout_marginLeft="30sp"
             android:layout_marginRight="30sp"
-            android:progressDrawable="@color/dado_texto"
+            android:progressDrawable="@color/sombra_texto"
             android:thumb="@drawable/thumb"/>
 
 
     <LinearLayout
+
         android:layout_marginTop="25sp"
         android:layout_width="match_parent"
         android:layout_height="130sp"
@@ -64,7 +69,7 @@
                 android:background="@drawable/dado"
                 android:gravity="center"
                 android:text="1"
-                android:textColor="@color/dado_texto"
+                android:textColor="@color/sombra_texto"
                 android:textSize="70sp" />
         </FrameLayout>
 
@@ -94,36 +99,43 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_rolar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30sp"
-        android:layout_marginRight="30sp"
-        android:layout_marginTop="30sp"
-        android:textColor="@color/dado_texto"
-        android:textSize="20sp"
-        android:background="@color/cor_botao"
-        android:text="@string/botao_rolar" />
+        <TextView
+            android:id="@+id/resultado"
+            android:layout_marginTop="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="40sp"
+            android:layout_gravity="center"
+            android:gravity="center" />
 
-    <TextView
-        android:id="@+id/resultado"
-        android:layout_marginTop="10sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#FFFFFF"
-        android:textSize="40sp"
-        android:layout_gravity="center"
-        android:gravity="center" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/resultado_individual"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/dezesseis"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:textColor="#FFFFFF"/>
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="bottom|end"
+            android:layout_marginTop="@dimen/dezesseis"
+            android:layout_marginBottom="@dimen/dezesseis"
+            android:layout_marginRight="@dimen/dezesseis"
+            android:clickable="true"
+            android:src="@drawable/cruz"
+            app:elevation="8dp"
+            app:fabSize="normal"
+            app:backgroundTint="@color/dado_texto"
+            app:pressedTranslationZ="12dp"
+            app:layout_anchor="@id/ancora"
+            app:layout_anchorGravity="bottom|right|end"/>
+    </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/resultado_individul"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:textSize="14sp"
-        android:textColor="#FFFFFF"/>
 
 </LinearLayout>

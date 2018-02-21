@@ -1,22 +1,18 @@
 package com.markswell.roladordedadoswod;
 
 import android.graphics.Typeface;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean subtraiUm = true;
     private Integer dificuldadeNivel;
     private TextView resultado;
-    private Button btn_rolar;
+    private FloatingActionButton fab;
     private Integer numeroDados;
     private TextView resultadoIndividual;
 
@@ -46,9 +42,9 @@ public class MainActivity extends AppCompatActivity {
     private void iniciarCampos() {
         dificuldadeNivel = new Integer(6);
         numeroDados = new Integer(1);
-        btn_rolar = (Button)findViewById(R.id.btn_rolar);
+        fab = (FloatingActionButton)findViewById(R.id.fab);
         resultado = (TextView)findViewById(R.id.resultado);
-        resultadoIndividual = (TextView)findViewById(R.id.resultado_individul);
+        resultadoIndividual = (TextView)findViewById(R.id.resultado_individual);
 
         dificuldade = (SeekBar)findViewById(R.id.dificuldade);
 
@@ -69,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void iniciarRegras() {
-        btn_rolar.setOnClickListener(new View.OnClickListener() {
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Rolador rolador = new Rolador(dificuldadeNivel, numeroDados, dobraDez, subtraiUm);
