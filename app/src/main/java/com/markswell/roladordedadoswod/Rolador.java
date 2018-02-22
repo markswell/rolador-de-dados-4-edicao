@@ -33,6 +33,7 @@ public class Rolador {
             resultados.add(result);
             avaliar(result);
             if(result.equals(10) && rerolarDez){
+                //todo rerolar caso dê dez de novo
                 Integer res = obterResultadoDado();
                 resultadosDez.add(res);
                 avaliar(res);

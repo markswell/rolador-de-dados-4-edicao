@@ -1,7 +1,9 @@
 package com.markswell.roladordedadoswod;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -69,12 +71,9 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mudarCorNormal();
-                Rolador rolador = new Rolador(dificuldadeNivel, numeroDados, dobraDez, subtraiUm);
-                Resultado resultadoRolador = rolador.rolar();
-                resultado.setText(resultadoRolador.getResultado());
-                resultadoIndividual.setText(resultadoRolador.getContagemDados() + avaliarContagemDadosDez(resultadoRolador));
-                mudarCorFalhaCritica();
+                fab.setEnabled(false);
+                rolar();
+                fab.setEnabled(true);
             }
         });
 
@@ -122,6 +121,22 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void rolar() {
+        mudarCorNormal();
+        MediaPlayer mediaPlayer = MediaPlayer.create(getContext(), R.raw.efeito);
+        mediaPlayer.start();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Rolador rolador = new Rolador(dificuldadeNivel, numeroDados, dobraDez, subtraiUm);
+        Resultado resultadoRolador = rolador.rolar();
+        resultado.setText(resultadoRolador.getResultado());
+        resultadoIndividual.setText(resultadoRolador.getContagemDados() + avaliarContagemDadosDez(resultadoRolador));
+        mudarCorFalhaCritica();
+    }
+
     private void mudarCorFalhaCritica() {
         if(resultado.getText().toString().contains("críti")){
             resultado.setTextColor(Color.parseColor("#FE0000"));
@@ -158,5 +173,8 @@ public class MainActivity extends AppCompatActivity {
 
            }
        });
+    }
+    private Context getContext(){
+        return this;
     }
 }
