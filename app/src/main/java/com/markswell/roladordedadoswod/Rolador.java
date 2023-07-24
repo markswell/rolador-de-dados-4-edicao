@@ -29,18 +29,23 @@ public class Rolador {
         List<Integer> resultados = new ArrayList<>();
         List<Integer> resultadosDez = new ArrayList<>();
         for (int i = 0; i < dados; i++){
-            Integer result = obterResultadoDado();
-            resultados.add(result);
-            avaliar(result);
+            Integer result = getResult(resultados);
             if(result.equals(10) && rerolarDez){
-                //todo rerolar caso dê dez de novo
-                Integer res = obterResultadoDado();
-                resultadosDez.add(res);
-                avaliar(res);
+                do {
+                    result = getResult(resultadosDez);
+                } while (result.equals(10));
             }
         }
 
         return criarResultado(somaResultados, resultados, resultadosDez);
+    }
+
+    @NonNull
+    private Integer getResult(List<Integer> resultados) {
+        Integer result = obterResultadoDado();
+        resultados.add(result);
+        avaliar(result);
+        return result;
     }
 
     @NonNull
